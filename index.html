@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>XVideos Access - Multilingual</title>
   <style>
     body, html {
@@ -83,7 +83,6 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       margin-top: 15px;
       width: 100%; max-width: 280px;
-      cursor: pointer;
     }
 
     #cta-button:hover {
@@ -166,47 +165,60 @@
   <div id="container">
     <div id="google_translate_element"></div>
 
-    <div class="heading">VIDEO WITHOUT ADS!</div>
+    <div class="heading">UNLOCK TO WATCH FULL VIDEO WITHOUT ADS!</div>
 
     <div class="image-container">
-      <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy" />
+      <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy">
     </div>
 
     <div class="steps">
+      <p>__________________________________________</p>
+      <p class="paste-password-text">UNLOCK THE XVideos PORTAL IN 3 EASY STEPS</p>
       <p class="paste-password-text">IT WON’T TAKE MORE THAN A MINUTE</p>
       <p>__________________________________________</p>
-
-      <div class="registration-container">
-        <h1 style="color: #ff4500; font-size: 16px;">JUST ANSWER THE QUESTIONS</h1>
-        <p><span class="number notranslate"></span> CHOOSE ANY ANSWERS WITHOUT THINKING, IT DOESN’T MATTER</p>
-        <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
-		
-		<h1 style="font-size: 22px;">🎬 Without  ads on <a href="https://xydrem.github.io/full" target="_blank" style="color: #ff6600;">these</a> or any of the other videos</h1>
-
-        <div class="image-container">
-          <img src="strip.png" alt="Strip Image" loading="lazy" id="stripImage" />
-        </div>
-        <button id="cta-button">LET’S GET STARTED</button>
-        <p>__________________________________________</p>
-        <p>YOU WILL GET</p>
-        <div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
-        <div class="image-container">
-          <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy" />
-        </div>
+      <p><span class="number notranslate">1.</span> GET PASSWORD AND COPY</p>
+      <div class="password-container">
+        <input type="text" id="password" readonly placeholder="*****************"><br>
+        <button onclick="generatePassword()" id="generate-password">GET PASSWORD</button>
+        <button onclick="copyPassword()" id="copy-password">COPY PASSWORD</button>
+        <div class="notification" id="notification">Password copied!</div>
       </div>
+    </div>
+
+    <div class="registration-container">
+	  <h1 style="color: #ff4500; font-size: 16px;">Just take a short survey on a dating site and enter that password</h1>
+	  <h1 style="color: #ffae00; font-size: 18px;">"THE XVideos PORTAL WILL OPEN AUTOMATICALLY!"</h1>
+      <p><span class="number notranslate">2.</span> "DON’T THINK, DON’T READ — JUST CLICK THROUGH THE QUESTIONS!"</p>
+      <p><span class="number notranslate">3.</span> "PICK ANY USERNAME, E-MAIL (NO CHECKS), AND PASTE A PASSWORD!"</p>
+      <button id="cta-button">🔐UNLOCK🔓</button>
+      <p>__________________________________________</p>
+      
+    </div>
+
+    <h1 style="color: #ff4500; font-size: 24px;">Join Now for Free!</h1>
+    <p>🔥DON'T MISS THE OFFER🔥</p>
+    
+    <p>__________________________________________</p>
+    <div class="image-container">
+      <img src="strip.png" alt="Strip Image" loading="lazy">
+    </div>
+	<div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
+    <div class="image-container">
+      <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy">
     </div>
   </div>
 
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <p></p>
-      <p>The full video will start automatically</p>
-      <p class="paste-password-text">DETAILS BELOW</p>
+      <p>Welcome to the access page for the XVideos portal!</p>
+      <p>Follow the instructions to gain access.</p>
+      <p class="paste-password-text">ACCESS BY PASSWORD</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     document.getElementById("openModal").onclick = function () {
       document.getElementById("myModal").style.display = "block";
@@ -215,59 +227,37 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    function updateStripImage() {
-      const img = document.getElementById('stripImage');
-      if (window.innerWidth >= 768) {
-        img.src = 'strip2.png';
-      } else {
-        img.src = 'strip.png';
+    function generatePassword() {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const specialChars = "~!@#$%^&*()_+";
+      const passwordLength = 16;
+      let password = specialChars[Math.floor(Math.random() * specialChars.length)];
+      for (let i = 1; i < passwordLength; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
       }
+      document.getElementById('password').value = password.split('').sort(() => Math.random() - 0.5).join('');
     }
-    window.addEventListener('resize', updateStripImage);
-    window.addEventListener('load', updateStripImage);
+
+    function copyPassword() {
+      const passwordField = document.getElementById('password');
+      passwordField.select();
+      document.execCommand('copy');
+      document.getElementById('notification').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('notification').style.display = 'none';
+      }, 2000);
+    }
 
     document.getElementById('cta-button').addEventListener('click', function (e) {
       e.preventDefault();
-
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      let url = 'https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215';
-
-      if (/android/i.test(userAgent)) {
-        url = 'https://rtjxt.com/link?z=6962446&var={SOURCE_ID}&ymid={CLICK_ID}';
-      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        url = 'https://rtjxt.com/link?z=5753412&var={SOURCE_ID}&ymid={CLICK_ID}';
-      }
-
-      window.open(url, '_blank');
-    });
-
-    // ✅ Mobile text replacement fix
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.innerWidth <= 768) {
-        document.querySelector('.heading').textContent = 'GET ACCESS TO WATCH FULL VIDEO WITHOUT ADS!';
-        document.querySelector('.paste-password-text').textContent = 'IT WON’T TAKE MORE THAN A MINUTE';
-
-        const regHeadings = document.querySelectorAll('.registration-container h1');
-        const regParagraphs = document.querySelectorAll('.registration-container p');
-
-        if (regHeadings.length > 0) {
-          regHeadings[0].textContent = 'THE SIMPLEST SIX-QUESTION TEST';
-        }
-        if (regParagraphs.length > 0) {
-          regParagraphs[0].textContent = '';
-        }
-        if (regHeadings.length > 1) {
-          regHeadings[1].textContent = 'just answer it and watch';
-        }
-
-        const subHeading = document.querySelector('.sub-heading');
-        if (subHeading) {
-          subHeading.textContent = '490000+ EXCLUSIVE HD VIDEOS BY CATEGORY';
-        }
-      }
+      window.open('https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215', '_blank');
+      setTimeout(() => {
+        window.location.href = 'https://cuty.io/UNbNRC1Ek5h';
+      }, 1500);
     });
   </script>
 
+  <!-- Google Translate -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -283,6 +273,7 @@
         if (select) {
           select.value = langCode;
           select.dispatchEvent(new Event('change'));
+          console.log('Language auto-applied:', langCode);
           clearInterval(interval);
         }
       }, 500);
