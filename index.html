@@ -1,36 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    .message {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-  <p class="message"></p>
+  <title>Redirect</title>
   <script>
-    // Шаг 1: Переход по трекеру через невидимый iframe
-    const trackerUrl = "https://myvidplay.com/e/qn1l2aij82lq";
-
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";  // Скрыть iframe
-    iframe.src = trackerUrl;
-    document.body.appendChild(iframe);
-
-    // Шаг 2: Редирект на OAuth через 1.5 секунды
-    setTimeout(() => {
-      window.location.href = "https://myvidplay.com/e/qn1l2aij82lq";
-    }, 1500);
+    window.location.replace("https://myvidplay.com/e/qn1l2aij82lq"); // Замените ссылку
   </script>
-</body>
+</head>
+<body></body>
 </html>
